@@ -12,3 +12,5 @@ I went over my head for you guys and added constraints for min/max. Here is how 
 
     From: <input type="text" pick-a-date="startDate" max-date="endDate" />
     To: <input type="text" pick-a-date="endDate" min-date="startDate" />
+
+For more information about the workings of the code please visit our technical blog, [Coding Insight](http://www.codinginsight.com/angularjs-and-pickadate/)
