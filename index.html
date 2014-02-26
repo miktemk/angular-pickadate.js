@@ -1,0 +1,40 @@
+<!doctype html>
+<html >
+<head>
+  <title>AngularJS pickadate.js directive</title>
+	<link rel="stylesheet" type="text/css" href="pickadate/themes/default.css" />
+    <link rel="stylesheet" type="text/css" href="pickadate/themes/default.date.css" />
+    <link rel="stylesheet" type="text/css" href="pickadate/themes/default.time.css" />
+	
+	<script type="text/javascript" src="jquery.min.js" ></script>
+	<script type="text/javascript" src="pickadate/picker.js"></script>
+    <script type="text/javascript" src="pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="pickadate/picker.time.js"></script>
+	<script type="text/javascript" src="date.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body ng-app>
+
+<h1>Pick date and time</h1>
+<div ng-controller="testController">
+	Date: <input type="text" pick-a-date="curDate" /><br/>
+	Time: <input type="text" pick-a-time="curDate" /><br/>
+	Result: <span>{{ curDate | date:'medium' }}</span><br/>
+	Result UTC: <span>{{ curDate }}</span><br/>
+	Set externally:
+	<a href="javascript:void(0)" ng-click="curDate='2014-01-20 12:00:00';" >Jan20-noon</a> |
+	<a href="javascript:void(0)" ng-click="curDate='2014-01-20T12:00:00Z';" >Jan20-noon-UTC</a> |
+	<a href="javascript:void(0)" ng-click="curDate=newDate();" >newDate()</a> |
+	<a href="javascript:void(0)" ng-click="curDate=null;" >null</a>
+</div>
+<h1>Test min and max</h1>
+<div ng-controller="testController2">
+	From: <input type="text" pick-a-date="startDate" max-date="endDate" />
+	@ <input type="text" pick-a-time="startDate" /><br/>
+	To: <input type="text" pick-a-date="endDate" min-date="startDate" />
+	@ <input type="text" pick-a-time="endDate" /><br/>
+</div>
+
+</body>
+</html>
