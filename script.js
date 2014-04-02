@@ -20,9 +20,9 @@ angular.module('ng').directive('pickADate', function () {
                         }
                         if (!scope.pickADate)
                             scope.pickADate = new Date(0);
-                        scope.pickADate.setYear(select.obj.getYear() + 1900); // hello Y2K...
-                        // It took me half a day to figure out that javascript Date object's getYear
-                        // function returns the years since 1900. Ironically setYear() accepts the actual year A.D.
+                        scope.pickADate.setYear(select.obj.getFullYear());
+                        // Interesting: getYear retuens only since 1900. Use getFullYear instead.
+						// It took me half a day to figure that our. Ironically setYear() accepts the actual year A.D.
                         // So as I got the $#%^ 114 and set it, guess what, I was transported to ancient Rome 114 A.D.
                         // That's it I'm done being a programmer, I'd rather go serve Emperor Trajan as a sex slave.
                         scope.pickADate.setMonth(select.obj.getMonth());
