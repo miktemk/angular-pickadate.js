@@ -64,7 +64,8 @@ define(['jquery', './pickadate/picker.date', './pickadate/picker.time'], functio
 	});
 
 	// pick-a-time (attribute)
-	return {
+	angular.module('ng').directive('pickADate', function () {
+	   return {
             restrict: "A",
             scope: {
                 pickATime: '='
