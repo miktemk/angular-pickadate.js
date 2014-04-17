@@ -1,5 +1,5 @@
 // pick-a-date (attribute)
-define(['jquery', "libs/angular-pickadate.js/pickadate/picker.date", "libs/angular-pickadate.js/pickadate/picker.time"], function ($) {
+define(['jquery', "depend!libs/angular-pickadate.js/pickadate/picker.date[jquery,picker]", "depend!libs/angular-pickadate.js/pickadate/picker.time[jquery,picker]"], function ($) {
     angular.module('ng').directive('pickADate', function () {
         return {
             restrict: "A",
@@ -33,7 +33,41 @@ define(['jquery', "libs/angular-pickadate.js/pickadate/picker.date", "libs/angul
                     },
                     onClose: function () {
                         element.blur();
-                    }
+                    },
+                    // Strings and Translations
+                    monthsFull: attrs.monthsFull,
+                    monthsShort: attrs.monthsShort,
+                    weekdaysFull: attrs.weekdaysFull,
+                    weekdaysShort: attrs.weekdaysShort,
+                    showMonthsShort: attrs.showMonthsShort,
+                    showWeekdaysFull: attrs.showWeekdaysFull,
+                    // Buttons
+                    today: (attrs.today !== undefined) ? attrs.today : "Today",
+                    clear: (attrs.clear !== undefined) ? attrs.clear : "Clear",
+                    // Accessibility labels
+                    labelMonthNext: (attrs.labelMonthNext !== undefined) ? attrs.labelMonthNext : "Next month",
+                    labelMonthPrev: (attrs.labelMonthPrev !== undefined) ? attrs.labelMonthPrev : "Previous month",
+                    labelMonthSelect: (attrs.labelMonthSelect !== undefined) ? attrs.labelMonthSelect : "Select a month",
+                    labelYearSelect: (attrs.labelYearSelect !== undefined) ? attrs.labelYearSelect : "Select a year",
+                    // Formats
+                    format: attrs.format,
+                    formatSubmit: attrs.formatSubmit,
+                    hiddenPrefix: attrs.hiddenPrefix,
+                    hiddenSuffix: attrs.hiddenSuffix,
+                    hiddenName: attrs.hiddenName,
+                    // Editable input
+                    editable: attrs.editable,
+                    // Dropdown selectors
+                    selectYears: (attrs.selectYears == "true"),
+                    selectMonths: (attrs.selectMonths == "true"),
+                    // First day of the week
+                    firstDay: attrs.firstDay,
+                    // Date limits
+                    min: attrs.min,
+                    max: attrs.max,
+                    // Disable dates
+                    disable: attrs.disable
+
                 });
                 function updateValue(newValue) {
                     if (newValue) {
@@ -97,10 +131,23 @@ define(['jquery', "libs/angular-pickadate.js/pickadate/picker.date", "libs/angul
                     onClose: function () {
                         element.blur();
                     },
-                    format: attrs['format'],
-                    formatLabel: attrs['formatLabel'],
-                    formatSubmit: attrs['formatSubmit'],
-                    clear: (attrs['clear'] !== undefined) ? attrs['clear'] : "Clear"
+                    // Translations and clear button
+                    clear: (attrs.clear !== undefined) ? attrs.clear : "Clear",
+                    // Formats
+                    format: attrs.format,
+                    formatLabel: attrs.formatLabel,
+                    formatSubmit: attrs.formatSubmit,
+                    hiddenPrefix: attrs.hiddenPrefix,
+                    hiddenSuffix: attrs.hiddenSuffix,
+                    // Editable inputs
+                    editable: attrs.editable,
+                    // Time intervals
+                    interval: attrs.interval,
+                    // Time limits
+                    min: attrs.min,
+                    max: attrs.max,
+                    // Disable times
+                    disable: attrs.disable
                 });
                 function updateValue(newValue) {
                     if (newValue) {
@@ -118,8 +165,8 @@ define(['jquery', "libs/angular-pickadate.js/pickadate/picker.date", "libs/angul
                     if (newValue == oldValue)
                         return;
                     updateValue(newValue);
-                    if (attrs['timeChange'] && manualChange) {
-                        scope.$parent.$eval(attrs['timeChange']);
+                    if (attrs.timeChange && manualChange) {
+                        scope.$parent.$eval(attrs.timeChange);
                         manualChange = false;
                     }
                 }, true);
