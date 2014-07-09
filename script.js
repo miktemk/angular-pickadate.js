@@ -5,11 +5,12 @@ angular.module('ng').directive('pickADate', function () {
         scope: {
             pickADate: '=',
             minDate: '=',
-            maxDate: '='
+            maxDate: '=',
+			pickADateOptions: '='
         },
         link: function (scope, element, attrs) {
-            element.pickadate({
-                onSet: function (e) {
+			var options = $.extend(scope.pickADateOptions || {}, {
+				onSet: function (e) {
                     if (scope.$$phase || scope.$root.$$phase) // we are coming from $watch or link setup
                         return;
                     var select = element.pickadate('picker').get('select'); // selected date
@@ -33,7 +34,8 @@ angular.module('ng').directive('pickADate', function () {
                 onClose: function () {
                     element.blur();
                 }
-            });
+			});
+            element.pickadate(options);
             function updateValue(newValue) {
                 if (newValue) {
                     scope.pickADate = (newValue instanceof Date) ? newValue : new Date(newValue);
@@ -67,11 +69,12 @@ angular.module('ng').directive('pickATime', function () {
     return {
         restrict: "A",
         scope: {
-            pickATime: '='
+            pickATime: '=',
+			pickATimeOptions: '='
         },
         link: function (scope, element, attrs) {
-            element.pickatime({
-                onSet: function (e) {
+			var options = $.extend(scope.pickATimeOptions || {}, {
+				onSet: function (e) {
                     if (scope.$$phase || scope.$root.$$phase) // we are coming from $watch or link setup
                         return;
                     var select = element.pickatime('picker').get('select'); // selected date
@@ -94,7 +97,8 @@ angular.module('ng').directive('pickATime', function () {
                 onClose: function () {
                     element.blur();
                 }
-            });
+			});
+            element.pickatime(options);
             function updateValue(newValue) {
                 if (newValue) {
                     scope.pickATime = (newValue instanceof Date) ? newValue : new Date(newValue);
@@ -130,3 +134,6 @@ function testController2($scope) {
     $scope.endDate = '2014-02-27 12:00:00';
 }
 
+function testController3($scope) {
+    $scope.curDate = '2014-02-24 12:00:00';
+}
