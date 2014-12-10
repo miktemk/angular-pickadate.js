@@ -1,5 +1,5 @@
 <!doctype html>
-<html >
+<html>
 <head>
   <title>AngularJS pickadate.js directive</title>
 	<link rel="stylesheet" type="text/css" href="pickadate/themes/default.css" />
@@ -14,9 +14,10 @@
 	<script type="text/javascript" src="angular.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 </head>
-<body ng-app>
+<body ng-app="MyApp">
 
 <h1>Pick date and time</h1>
+<div>
 <div ng-controller="testController">
 	Date: <input type="text" pick-a-date="curDate" /><br/>
 	Time: <input type="text" pick-a-time="curDate" /><br/>
@@ -40,6 +41,7 @@
 	Date: <input type="text" pick-a-date="curDate" pick-a-date-options="{ format: 'mm/dd/yy', selectYears: true }" /><br/>
 	Time: <input type="text" pick-a-time="curDate" pick-a-time-options="{ format: 'HH:i', selectYears: true }" /><br/>
 	Result: <span>{{ curDate | date:'medium' }}</span><br/>
+</div>
 </div>
 </body>
 </html>
