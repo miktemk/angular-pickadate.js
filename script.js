@@ -1,5 +1,6 @@
 // pick-a-date (attribute)
-angular.module('ng').directive('pickADate', function () {
+var ngDatePicker = angular.module('ngDatePicker', []);
+ngDatePicker.directive('pickADate', function () {
     return {
         restrict: "A",
         scope: {
@@ -65,7 +66,7 @@ angular.module('ng').directive('pickADate', function () {
 });
 
 // pick-a-time (attribute)
-angular.module('ng').directive('pickATime', function () {
+ngDatePicker.directive('pickATime', function () {
     return {
         restrict: "A",
         scope: {
@@ -120,20 +121,22 @@ angular.module('ng').directive('pickATime', function () {
     };
 });
 
-//--------- other misc shit ---------------
+//--------- other misc stuff ---------------
 
-function testController($scope) {
+(function () {
+  'use strict';
+  angular.module('MyApp', ['ngDatePicker'])
+  .controller('testController', function ($scope) {
     $scope.curDate = '';
-    $scope.newDate = function() {
-        return new Date();
+    $scope.newDate = function () {
+      return new Date();
     };
-}
-
-function testController2($scope) {
+  })
+  .controller('testController2', function ($scope) {
     $scope.startDate = '2014-02-24 12:00:00';
     $scope.endDate = '2014-02-27 12:00:00';
-}
-
-function testController3($scope) {
+  })
+  .controller('testController3', function ($scope) {
     $scope.curDate = '2014-02-24 12:00:00';
-}
+  })
+})();

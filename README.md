@@ -3,7 +3,13 @@ angular-pickadate.js
 
 Angularjs extension for the slick date/time picker, [pickadate.js by Amsul](http://amsul.ca/pickadate.js/)
 
-The use is very simple once you include this directive:
+Add the module as a dependency to your application module:
+
+```js
+var myAppModule = angular.module('MyApp', ['ngDatePicker'])
+```
+
+The use is very simple once you add the dependency:
 
     <input type="text" pick-a-date="curDate" />
     <input type="text" pick-a-time="curDate" />
